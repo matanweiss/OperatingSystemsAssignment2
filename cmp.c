@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 3 || 5 < argc)
     {
-        printf("usage: ./cmp <file1> <file2> -v\n");
+        printf("usage: ./cmp <file1> <file2> [-v] [-i]\n");
         return 1;
     }
     int ignoreCase = 0;
@@ -48,9 +48,19 @@ int main(int argc, char *argv[])
         verbose = 1;
     if (3 < argc && !strcmp(argv[3], "-i"))
         ignoreCase = 1;
+    if (3 < argc && !verbose && !ignoreCase)
+    {
+        printf("usage: ./cmp <file1> <file2> [-v] [-i]\n");
+        return 1;
+    }
     if (4 < argc && !strcmp(argv[4], "-v"))
         verbose = 1;
     if (4 < argc && !strcmp(argv[4], "-i"))
         ignoreCase = 1;
+    if (4 < argc && (!verbose || !ignoreCase))
+    {
+        printf("usage: ./cmp <file1> <file2> [-v] [-i]\n");
+        return 1;
+    }
     return compare(argv[1], argv[2], verbose, ignoreCase);
 }

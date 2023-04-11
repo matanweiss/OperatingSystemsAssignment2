@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 3 || 5 < argc)
     {
-        printf("usage: ./cmp <file1> <file2> -v\n");
+        printf("usage: ./copy <file1> <file2> [-v] [-f]\n");
         return 1;
     }
     int force = 0;
@@ -44,9 +44,19 @@ int main(int argc, char *argv[])
         verbose = 1;
     if (3 < argc && !strcmp(argv[3], "-f"))
         force = 1;
+    if (3 < argc && !verbose && !force)
+    {
+        printf("hi usage: ./copy <file1> <file2> [-v] [-f]\n");
+        return 1;
+    }
     if (4 < argc && !strcmp(argv[4], "-v"))
         verbose = 1;
     if (4 < argc && !strcmp(argv[4], "-f"))
         force = 1;
+    if (4 < argc && (!verbose || !force))
+    {
+        printf("usage: ./copy <file1> <file2> [-v] [-f]\n");
+        return 1;
+    }
     return copy(argv[1], argv[2], verbose, force);
 }
