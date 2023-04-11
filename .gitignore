@@ -4,3 +4,6 @@ copy
 *txt
 codecA
 codecB
+encode
+*.o
+*.so
