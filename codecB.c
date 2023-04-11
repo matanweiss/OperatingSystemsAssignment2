@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char *encode(char *str)
+char *encodeB(char *str)
 {
     int i = 0;
     while (*(str + i))
@@ -12,7 +12,7 @@ char *encode(char *str)
     return str;
 }
 
-char *decode(char *str)
+char *decodeB(char *str)
 {
     int i = 0;
     while (*(str + i))

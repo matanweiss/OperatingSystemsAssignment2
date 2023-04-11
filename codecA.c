@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char *encode(char *str)
+char *encodeA(char *str)
 {
     int i = 0;
     while (*(str + i))
@@ -15,9 +15,9 @@ char *encode(char *str)
     return str;
 }
 
-char *decode(char *str)
+char *decodeA(char *str)
 {
-    return encode(str);
+    return encodeA(str);
 }
 
 // int main(int argc, char *argv[])
