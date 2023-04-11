@@ -16,4 +16,4 @@ encode: encode.c codec.h
 decode: decode.c codec.h
 	$(CC) $(FLAGS) decode decode.c ./libcodecA.so ./libcodecB.so
 clean:
-	rm cmp copy encode decode
+	rm cmp copy encode decode encode

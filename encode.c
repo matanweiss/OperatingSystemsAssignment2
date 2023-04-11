@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 3)
     {
-        printf("usage: ./encode <codecA/codecB> <string>\n");
+        printf("Usage : encode <codec> <message>\n");
         return 1;
     }
     char *result;
@@ -20,12 +20,9 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("usage: ./encode <codecA/codecB> <string>\n");
+        printf("Usage : encode <codec> <message>\n");
         return 1;
     }
     printf("%s\n", result);
-    // char *b = encode(argv[1]);
-    // printf("%s\n", b);
-    // printf("%s\n", argv[1]);
     return 0;
 }

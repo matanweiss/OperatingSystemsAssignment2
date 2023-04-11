@@ -19,11 +19,3 @@ char *decodeA(char *str)
 {
     return encodeA(str);
 }
-
-// int main(int argc, char *argv[])
-// {
-//     if (argc < 2)
-//         return 1;
-//     char *b = encode(argv[1]);
-//     printf("%s\n", b);
-// }

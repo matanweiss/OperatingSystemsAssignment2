@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 3)
     {
-        printf("usage: ./decode <codecA/codecB> <string>\n");
+        printf("Usage : decode <codec> <message>\n");
         return 1;
     }
     char *result;
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("usage: ./decode <codecA/codecB> <string>\n");
+        printf("Usage : decode <codec> <message>\n");
         return 1;
     }
     printf("%s\n", result);
