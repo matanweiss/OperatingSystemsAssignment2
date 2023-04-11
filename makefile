@@ -1,7 +1,7 @@
 CC=gcc
 FLAGS=-Wall -g -o
 
-all: cmp copy codecA codecB encode
+all: cmp copy codecA codecB encode decode
 
 cmp: cmp.c
 	$(CC) $(FLAGS) cmp cmp.c
@@ -11,9 +11,9 @@ codecA: codecA.c
 	$(CC) -shared -fPIC -o libcodecA.so codecA.c
 codecB: codecB.c
 	$(CC) -shared -fPIC -o libcodecB.so codecB.c
-encode: encode.o
-	$(CC) $(FLAGS) encode encode.o ./libcodecA.so ./libcodecB.so
-encode.o: encode.c codec.h
-	$(CC) -Wall -c encode.c 
+encode: encode.c codec.h
+	$(CC) $(FLAGS) encode encode.c ./libcodecA.so ./libcodecB.so
+decode: decode.c codec.h
+	$(CC) $(FLAGS) decode decode.c ./libcodecA.so ./libcodecB.so
 clean:
-	rm cmp copy
+	rm cmp copy encode decode
