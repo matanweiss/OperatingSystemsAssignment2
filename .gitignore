@@ -6,5 +6,6 @@ codecA
 codecB
 encode
 decode
+stshell
 *.o
 *.so
