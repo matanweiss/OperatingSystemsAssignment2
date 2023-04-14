@@ -1,33 +1,8 @@
 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
-64 bytes from 1.1.1.1: icmp_seq=1 ttl=54 time=11.0 ms
-64 bytes from 1.1.1.1: icmp_seq=2 ttl=54 time=9.11 ms
-64 bytes from 1.1.1.1: icmp_seq=3 ttl=54 time=9.24 ms
-64 bytes from 1.1.1.1: icmp_seq=4 ttl=54 time=10.8 ms
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=54 time=22.1 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=54 time=13.7 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=54 time=28.3 ms
 
 --- 1.1.1.1 ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3005ms
-rtt min/avg/max/mdev = 9.112/10.035/11.030/0.865 ms
-.
-..
-.git
-.gitignore
-.vscode
-1.txt
-2.txt
-5.txt
-cmp
-cmp.c
-codec.h
-codecA.c
-codecB.c
-copy
-copy.c
-decode
-decode.c
-encode
-encode.c
-libcodecA.so
-libcodecB.so
-makefile
-stshell
-stshell.c
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 13.709/21.346/28.257/5.961 ms

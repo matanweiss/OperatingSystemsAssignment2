@@ -36,6 +36,7 @@ int main()
             return 0;
 
         /* parse command line */
+        int failed = 0;
         i = 0;
         token = strtok(command, " ");
         while (token != NULL)
@@ -48,14 +49,18 @@ int main()
                 if (redirection == -1)
                     redirection = i;
                 else
-                    redirection = -2;
+                    failed = 1;
+                if (doubleRedirection != -1 || pipeLine[0] != -1)
+                    failed = 1;
             }
             else if (!strcmp(token, ">>"))
             {
                 if (doubleRedirection == -1)
                     doubleRedirection = i;
                 else
-                    doubleRedirection = 2;
+                    failed = 1;
+                if (redirection != -1 || pipeLine[0] != -1)
+                    failed = 1;
             }
             else if (!strcmp(token, "|"))
             {
@@ -64,7 +69,9 @@ int main()
                 else if (pipeLine[1] == -1)
                     pipeLine[1] = i;
                 else
-                    pipeLine[0] = -2;
+                    failed = 1;
+                if (redirection != -1 || doubleRedirection != -1)
+                    failed = 1;
             }
             token = strtok(NULL, " ");
             i++;
@@ -78,12 +85,7 @@ int main()
         /* for commands not part of the shell command language */
         if (fork() == 0)
         {
-            if (redirection == -2 || doubleRedirection == -2 || pipeLine[0] == -2)
-            {
-                printf("command not found\n");
-                return 1;
-            }
-            if (redirection != -1 && doubleRedirection != -1)
+            if (failed)
             {
                 printf("command not found\n");
                 return 1;
