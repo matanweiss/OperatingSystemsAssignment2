@@ -110,26 +110,50 @@ int main()
             }
             if (pipeLine[0] != -1)
             {
+                argv[pipeLine[0]] = NULL;
+
+                // execute the first command
+                if (fork() == 0)
+                {
+                    // redirect stdout into a text file
+                    if (freopen("pipeline.txt", "w", stdout) == NULL)
+                    {
+                        printf("freopen failed\n");
+                        return 1;
+                    }
+
+                    // execute the first command so its output goes to the file
+                    if (execvp(argv[0], argv) == -1)
+                    {
+                        printf("%s: command not found\n", argv[0]);
+                        return 1;
+                    }
+                }
+                wait(NULL);
+
                 // two pipelines
                 if (pipeLine[1] != -1)
                 {
-                }
+                    argv[pipeLine[1]] = NULL;
 
-                // one pipeline
-                else
-                {
-                    argv[pipeLine[0]] = NULL;
                     if (fork() == 0)
                     {
-                        // redirect stdout into a text file
-                        if (freopen("pipeline.txt", "w", stdout) == NULL)
+                        // redirect stdin into a text file
+                        if (freopen("pipeline.txt", "r", stdin) == NULL)
                         {
                             printf("freopen failed\n");
                             return 1;
                         }
 
-                        // execute the first command so its output goes to the file
-                        if (execvp(argv[0], argv) == -1)
+                        // redirect stdout into a text file
+                        if (freopen("pipeline2.txt", "w", stdout) == NULL)
+                        {
+                            printf("freopen failed\n");
+                            return 1;
+                        }
+
+                        // execute the second command so its input is from the file
+                        if (execvp(argv[pipeLine[0] + 1], argv + pipeLine[0] + 1) == -1)
                         {
                             printf("%s: command not found\n", argv[0]);
                             return 1;
@@ -137,6 +161,24 @@ int main()
                     }
                     wait(NULL);
 
+                    // redirect stdin into a text file
+                    if (freopen("pipeline2.txt", "r", stdin) == NULL)
+                    {
+                        printf("freopen failed\n");
+                        return 1;
+                    }
+
+                    // execute the third command so its input is from the file
+                    if (execvp(argv[pipeLine[1] + 1], argv + pipeLine[1] + 1) == -1)
+                    {
+                        printf("%s: command not found\n", argv[0]);
+                        return 1;
+                    }
+                }
+
+                // one pipeline
+                else
+                {
                     // redirect stdin into a text file
                     if (freopen("pipeline.txt", "r", stdin) == NULL)
                     {
