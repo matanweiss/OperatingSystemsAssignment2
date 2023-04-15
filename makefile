@@ -18,4 +18,4 @@ decode: decode.c codec.h
 stshell: stshell.c
 	$(CC) $(FLAGS) stshell stshell.c
 clean:
-	rm cmp copy encode decode stshell libcodecA.so libcodecB.so *.txt
+	rm cmp copy encode decode stshell libcodecA.so libcodecB.so

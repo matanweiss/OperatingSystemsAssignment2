@@ -85,8 +85,14 @@ int main()
         if (!strcmp(argv[0], "cmp"))
             argv[0] = "./cmp";
 
-        if (!strcmp(argv[0], "copy"))
+        else if (!strcmp(argv[0], "copy"))
             argv[0] = "./copy";
+
+        else if (!strcmp(argv[0], "encode"))
+            argv[0] = "./encode";
+
+        else if (!strcmp(argv[0], "decode"))
+            argv[0] = "./decode";
 
         /* for commands not part of the shell command language */
         if (fork() == 0)
