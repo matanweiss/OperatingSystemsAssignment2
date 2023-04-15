@@ -82,6 +82,12 @@ int main()
         if (argv[0] == NULL)
             continue;
 
+        if (!strcmp(argv[0], "cmp"))
+            argv[0] = "./cmp";
+
+        if (!strcmp(argv[0], "copy"))
+            argv[0] = "./copy";
+
         /* for commands not part of the shell command language */
         if (fork() == 0)
         {
