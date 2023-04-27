@@ -50,7 +50,7 @@ int main()
                     redirection = i;
                 else
                     failed = 1;
-                if (doubleRedirection != -1 || pipeLine[0] != -1)
+                if (doubleRedirection != -1)
                     failed = 1;
             }
             else if (!strcmp(token, ">>"))
@@ -59,7 +59,7 @@ int main()
                     doubleRedirection = i;
                 else
                     failed = 1;
-                if (redirection != -1 || pipeLine[0] != -1)
+                if (redirection != -1)
                     failed = 1;
             }
             else if (!strcmp(token, "|"))
