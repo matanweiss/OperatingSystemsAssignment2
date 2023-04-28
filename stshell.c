@@ -28,7 +28,7 @@ int main()
         int pipeLine[2] = {-1, -1};
         if (signal(SIGINT, sig_handler) == SIG_ERR)
             printf("\ncan't catch SIGINT\n");
-        printf("stshell: ");
+        printf("\033[1;32m@Matan&Zohar\033[0m:\033[1;34m~/stshell\033[0m$ ");
         fgets(command, 1024, stdin);
         command[strlen(command) - 1] = '\0'; // replace \n with \0
 
